@@ -1,0 +1,138 @@
+<!-- 
+     const axios = require('axios');
+
+const options = {
+  method: 'GET',
+  url: 'https://numbersapi.p.rapidapi.com/6/21/date',
+  params: {
+    fragment: 'true',
+    json: 'true'
+  },
+  headers: {
+    'X-RapidAPI-Key': 'e686a3cdb5msh44e7ae4b7ec50efp10cf6djsn085bfc13564e',
+    'X-RapidAPI-Host': 'numbersapi.p.rapidapi.com'
+  }
+};
+
+try {
+	const response = await axios.request(options);
+	console.log(response.data);
+} catch (error) {
+	console.error(error);
+}
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZAP-EV - Random Facts</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color:white;
+    }
+    header {
+      background-color: blue;
+      color: #fff;
+      text-align: center;
+      padding: 1em;
+    }
+    main {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 500px;
+      margin: 150px auto; /* Center the card horizontally */
+      text-align: center;
+    }
+    .card label,
+    .card input {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+      height: 40px; /* Increase the height of the input field */
+    }
+    .card button {
+      background-color: blue;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out;
+    }
+    .card button:hover {
+      background-color: blue; /* Darker shade on hover */
+    }
+    footer {
+      background-color: blue;
+      color: #fff;
+      text-align: center;
+      padding: 1em;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .fact-container {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="bgimage">
+    <div class="menu">
+      <div class="leftmenu">
+        <h4> ZAP-EV </h4>
+      </div>
+    </div>
+  </div>
+  <!-- Header -->
+  <header>
+    <h1>Math Facts</h1>
+  </header>
+  <!-- Main Content -->
+  <main class="card">
+    <label for="factsOutput">Math Fact:</label>
+    <div class="fact-container">
+      <p id="factsOutput"></p>
+    </div>
+    <button onclick="getMathFact()">Get Math Fact</button>
+  </main>
+  <!-- JavaScript Code -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    async function getMathFact() {
+      const factsOutput = document.getElementById('factsOutput');
+      const url = 'https://numbersapi.p.rapidapi.com/random/math?fragment=true&json=true';
+      const options = {
+          method: 'GET',
+          headers: {
+              'X-RapidAPI-Key': 'e686a3cdb5msh44e7ae4b7ec50efp10cf6djsn085bfc13564e',
+              'X-RapidAPI-Host': 'numbersapi.p.rapidapi.com'
+          }
+      };
+      try {
+          const response = await axios.get(url, options);
+          const result = response.data;
+          factsOutput.innerText = result.text;
+      } catch (error) {
+          console.error(error);
+          factsOutput.innerText = 'Error fetching facts';
+      }
+    }
+  </script>
+</body>
+</html>
